@@ -3,8 +3,6 @@ from random import choice
 from tkinter import Tk, messagebox, Label, PhotoImage
 from tkinter.ttk import Separator
 
-import pyglet
-
 from constants import *
 from interface.my_button import MyButton
 from interface.my_input import MyInput
@@ -19,7 +17,6 @@ class MyApp(Tk):
         self.title('Hangman')
         self.resizable(False, False)
         self.geometry(f"{WIDTH}x{HEIGHT}")
-        pyglet.font.add_file('./assets/fonts/Vollkorn-Bold.ttf')
         self.iconbitmap('./assets/app_icon.ico')
         # -- Game Vars --
         self.words = self.load_words()
