@@ -7,15 +7,26 @@
     <link rel="stylesheet" href="/static/css/main.css">
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="/static/css/styles.css">
+
 </head>
 <body class="text-gray-200 bg-gray-800">
 
 <main class="px-8 py-2 w-full">
-    <h1 class="text-center text-5xl font-bold mb-12">Hangman</h1>
+    <div class="mb-4">
+        <h1 class="text-center text-5xl font-bold">Hangman</h1>
+    </div>
+    <div id="alert-container"
+         class="flex justify-between items-center my-4 bg-green-600 w-full py-1 px-4 rounded hidden">
+        <p id="alert-message" class="font-semibold"></p>
+        <button id="alert-button">
+            <span class="font-bold text-lg">&times;</span>
+        </button>
+    </div>
     {% block content %}
     {% endblock content %}
 </main>
 
+<script src="/static/js/main.js"></script>
 {% block scripts %}
 {% endblock scripts %}
 </body>

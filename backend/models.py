@@ -218,25 +218,34 @@ WORDS = [
 ]
 
 
+class Preference(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    lives = db.Column(db.Integer)
+
+    @staticmethod
+    def init_default():
+        pref_instance = Preference(lives=9)
+        db.session.add(pref_instance)
+        db.session.commit()
+
+
 class Word(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String)
 
     @staticmethod
-    def from_list(words_list: list = None):
-        if not words_list:
-            words_list = WORDS
-
-        instances = [Word(word=x) for x in words_list]
+    def init_default():
+        instances = [Word(word=x) for x in WORDS]
         db.session.add_all(instances)
         db.session.commit()
 
     def __str__(self):
-        return self.word
+        return self.word.upper()
 
 
 db.create_all()
 
-words = Word.query.all()
-if not words:
-    Word.from_list()
+preference = Preference.query.all()
+if not preference:
+    Preference.init_default()
+    Word.init_default()

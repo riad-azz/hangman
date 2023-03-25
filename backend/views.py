@@ -3,11 +3,11 @@ import webview
 from random import choice
 from string import ascii_uppercase
 # Flask
-from flask import render_template, url_for, redirect, jsonify, request
+from flask import render_template, url_for, redirect, jsonify, flash
 # Local
 from backend import app, db
-from backend.models import Word
-from backend.forms import WordForm
+from backend.models import Word, Preference
+from backend.forms import WordForm, LivesForm
 
 
 @app.route('/')
@@ -29,9 +29,29 @@ def game():
 
 @app.route('/settings')
 def settings():
-    form = WordForm()
+    lives_form = LivesForm()
+    words_form = WordForm()
+    pref = Preference.query.get(1)
+    lives = pref.lives
     words = Word.query.order_by(Word.id.desc()).all()
-    return render_template('settings.html', form=form, words=words)
+    return render_template('settings.html', lives=lives, lives_form=lives_form, words_form=words_form, words=words)
+
+
+@app.route('/update-lives', methods=['POST'])
+def update_lives():
+    form = LivesForm()
+    prefs = Preference.query.get(1)
+    if form.validate_on_submit():
+        prefs.lives = form.lives.data
+        db.session.commit()
+
+    lives_count = prefs.lives
+    response = {
+        'category': 'success',
+        'message': f'Lives was updated to {lives_count}',
+        'lives': lives_count
+    }
+    return jsonify(response)
 
 
 @app.route('/restore-words')
@@ -41,8 +61,9 @@ def restore_words():
     db.session.commit()
 
     # Add the default words
-    Word.from_list()
+    Word.init_default()
     words = Word.query.order_by(Word.id.desc()).all()
+
     template = render_template('partials/words_list.html', words=words)
     response = {'template': template}
     return jsonify(response)

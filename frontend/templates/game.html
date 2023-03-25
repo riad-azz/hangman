@@ -21,16 +21,16 @@
         {% endfor %}
     </div>
     <div id="game-over" class="flex flex-col items-center text-xl hidden font-bold space-y-2">
-        <div id="message"></div>
+        <div id="message" class="mb-4"></div>
+    </div>
+    <div class="flex flex-col items-center justify-center w-full space-y-4 mt-4">
         <a href="{{ url_for('game') }}"
            class="block w-fit bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-            Play again
+            Restart
         </a>
-    </div>
-    <div class="flex justify-center w-full mt-4 fixed bottom-4">
         <a href="{{ url_for('home') }}"
-           class="block w-fit bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-            Leave
+           class="active:border-b-0 active:border-t-4 block w-fit bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Back
         </a>
     </div>
 </div>

@@ -1,8 +1,8 @@
 {% for word in words %}
-<li class="flex justify-between py-1.5 px-4 bg-gray-900 rounded hover:border">
+<li class="flex justify-between items-center py-1.5 px-4 bg-gray-900 rounded hover:border">
     <p class="font-bold">{{ word }}</p>
     <button onclick="removeWord(event);" data-url="{{ url_for('remove_word', pk=word.id) }}"
-       class="px-1 rounded text-red-600 bg-gray-800 hover:bg-gray-700 border border-slate-600">
+       class="active:border-b-0 active:border-t-4 bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">
         REMOVE
     </button>
 </li>
