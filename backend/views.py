@@ -1,7 +1,9 @@
 # Other
 import webview
+from random import choice
+from string import ascii_uppercase
 # Flask
-from flask import render_template, url_for, redirect, jsonify
+from flask import render_template, url_for, redirect, jsonify, request
 # Local
 from backend import app, db
 from backend.models import Word
@@ -15,7 +17,14 @@ def home():
 
 @app.route('/game')
 def game():
-    return render_template('game.html')
+    words = Word.query.all()
+    if words:
+        word = choice(words).word.upper()
+    else:
+        word = "HANGMAN"
+    lives = 9
+    letters = ascii_uppercase
+    return render_template('game.html', letters=letters, word=word, lives=lives)
 
 
 @app.route('/settings')
@@ -32,7 +41,7 @@ def restore_words():
     db.session.commit()
 
     # Add the default words
-    Word.from_json()
+    Word.from_list()
     words = Word.query.order_by(Word.id.desc()).all()
     template = render_template('partials/words_list.html', words=words)
     response = {'template': template}
@@ -55,14 +64,15 @@ def add_word():
 
 @app.route('/remove-word/<int:pk>')
 def remove_word(pk):
-    form = WordForm()
     word_to_delete = Word.query.get(pk)
     if word_to_delete:
         db.session.delete(word_to_delete)
         db.session.commit()
 
     words = Word.query.order_by(Word.id.desc()).all()
-    return render_template('settings.html', form=form, words=words)
+    template = render_template('partials/words_list.html', words=words)
+    response = {'template': template}
+    return jsonify(response)
 
 
 @app.route('/delete-all-words', )

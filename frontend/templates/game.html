@@ -1,29 +1,43 @@
 {% extends 'base.html' %}
 
-{% include 'partials/back_home.html' %}
-
 {% block content %}
 <div class="flex flex-col items-center justify-center w-fit mx-auto">
-    <div class="grid grid-cols-2 gap-4">
-        <div>
-            <div class="hangman">
-                <div class="rope"></div>
-                <div class="head"></div>
-                <div class="body"></div>
-                <div class="left-arm"></div>
-                <div class="right-arm"></div>
-                <div class="left-leg"></div>
-                <div class="right-leg"></div>
-            </div>
-        </div>
-        <div class="grid grid-cols-5 gap-4">
-            <p>a</p>
-            <p>b</p>
-            <p>c</p>
-            <p>c</p>
-            <p>c</p>
-            <p>c</p>
-        </div>
+    <div class="text-2xl py-2 px-4 bg-gray-800 mb-4">
+        <span>You have</span>
+        <span id="lives-counter" class="text-green-500 font-bold">{{ lives }}</span>
+        <span>lives left.</span>
+    </div>
+    <div class="grid grid-cols-9 gap-2 mb-4">
+        {% for letter in letters %}
+        <button onclick="checkLetter(event, '{{ letter }}')"
+                class="letter-button text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-3 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            {{ letter }}
+        </button>
+        {% endfor %}
+    </div>
+    <div id="word" class="flex items-center justify-between text-6xl space-x-2 mb-4">
+        {% for letter in word %}
+        <span id="letter-{{ letter }}">_</span>
+        {% endfor %}
+    </div>
+    <div id="game-over" class="flex flex-col items-center text-xl hidden font-bold space-y-2">
+        <div id="message"></div>
+        <a href="{{ url_for('game') }}"
+           class="block w-fit bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Play again
+        </a>
+    </div>
+    <div class="flex justify-center w-full mt-4 fixed bottom-4">
+        <a href="{{ url_for('home') }}"
+           class="block w-fit bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Leave
+        </a>
     </div>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script data-word="{{ word }}"
+        data-lives="{{ lives }}"
+        src="/static/js/game.js"></script>
+{% endblock scripts %}

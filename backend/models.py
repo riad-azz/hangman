@@ -239,4 +239,4 @@ db.create_all()
 
 words = Word.query.all()
 if not words:
-    Word.from_json()
+    Word.from_list()
