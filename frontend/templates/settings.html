@@ -1,18 +1,43 @@
 {% extends 'base.html' %}
 
+{% include 'partials/back_home.html' %}
+
 {% block content %}
-<div class="flex flex-col items-center justify-center w-fit mx-auto">
-    <h1 class="text-center text-5xl font-bold mb-12">Hangman</h1>
-    <ul class="text-center space-y-8">
-        <li>
-            <div>Score : {{ score }}</div>
-        </li>
-        <li>
-            <div>Score : {{ score }}</div>
-        </li>
-        <li>
-            <a href="/add-score/" class="px-4 py-1 bg-blue-600 hover:bg-blue-500 rounded-lg">Add score</a>
-        </li>
+<div class="flex flex-col items-center justify-center mx-auto">
+    {% if form.errors %}
+    <div class="block text-sm text-red-500">
+        {{ form.errors.0 }}
+    </div>
+    {% endif %}
+    <form id="word-form" data-url="{{ url_for('add_word') }}"
+          class="flex w-full items-center justify-between mb-4">
+        {{ form.csrf_token }}
+        <input name="word" id="id_word"
+               class="w-full py-1 px-2 bg-gray-700 text-gray-200 border border-2 border-slate-600 rounded" required>
+        <button type="submit"
+                class="shrink-0 ml-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Add word
+        </button>
+    </form>
+
+    <ul id="words-list"
+        class="text-center space-y-1 p-1 mb-4 w-full max-h-[200px] min-h-[200px] overflow-y-scroll border border-2 border-slate-600 rounded-lg">
+        {% include 'partials/words_list.html' %}
     </ul>
+
+    <div class="flex justify-end w-full space-x-2">
+        <button id="delete-all-button" data-url="{{ url_for('delete_all_words') }}"
+                class="block bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">
+            Delete All
+        </button>
+        <button id="restore-button" data-url="{{ url_for('restore_words') }}" data-
+                class="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Restore Defaults
+        </button>
+    </div>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script src="/static/js/settings.js"></script>
+{% endblock scripts %}

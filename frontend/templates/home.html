@@ -2,22 +2,21 @@
 
 {% block content %}
 <div class="flex flex-col items-center justify-center w-fit mx-auto">
-    <h1 class="text-center text-5xl font-bold mb-12">Hangman</h1>
     <ul class="text-center space-y-8">
         <li>
-            <a href="game/"
+            <a href="{{ url_for('game') }}"
                class="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                 Start
             </a>
         </li>
         <li>
-            <a href="settings/"
+            <a href="{{ url_for('settings') }}"
                class="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                 Settings
             </a>
         </li>
         <li>
-            <a href="/"
+            <a href="{{ url_for('quit_app') }}"
                class="block bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-12 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                 Quit
             </a>

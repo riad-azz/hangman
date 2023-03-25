@@ -4,19 +4,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman</title>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/static/css/main.css">
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body class="text-gray-200 bg-gray-800">
-<div class="w-full text-center mt-4 space-x-4 fixed bottom-4">
-    <a href="/" class="px-4 py-1 bg-blue-600 hover:bg-blue-500 rounded-lg">Home</a>
-    <a href="." class="px-4 py-1 bg-blue-600 hover:bg-blue-500 rounded-lg">Refresh</a>
-</div>
-<main class="px-8 py-12 w-full">
+
+<main class="px-8 py-2 w-full">
+    <h1 class="text-center text-5xl font-bold mb-12">Hangman</h1>
     {% block content %}
     {% endblock content %}
 </main>
 
+{% block scripts %}
+{% endblock scripts %}
 </body>
 </html>
