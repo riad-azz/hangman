@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center w-fit mx-auto">
+    <h1 class="text-center text-5xl font-bold mb-12">Hangman</h1>
+    <ul class="text-center space-y-8">
+        <li>
+            <div>Score : {{ score }}</div>
+        </li>
+        <li>
+            <div>Score : {{ score }}</div>
+        </li>
+        <li>
+            <a href="/add-score/" class="px-4 py-1 bg-blue-600 hover:bg-blue-500 rounded-lg">Add score</a>
+        </li>
+    </ul>
+</div>
+{% endblock content %}

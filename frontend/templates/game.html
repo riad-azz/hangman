@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center w-fit mx-auto">
+    <h1 class="text-center text-5xl font-bold mb-12">Hangman</h1>
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <div class="hangman">
+                <div class="rope"></div>
+                <div class="head"></div>
+                <div class="body"></div>
+                <div class="left-arm"></div>
+                <div class="right-arm"></div>
+                <div class="left-leg"></div>
+                <div class="right-leg"></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-5 gap-4">
+            <p>a</p>
+            <p>b</p>
+            <p>c</p>
+            <p>c</p>
+            <p>c</p>
+            <p>c</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
