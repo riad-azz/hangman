@@ -19,9 +19,6 @@ app.config['SECRET_KEY'] = 'SECRET-KEY-HERE'
 # App Routes
 @app.route('/')
 def home():
-    score = session.get('score', None)
-    if not score:
-        session['score'] = 10
     return render_template('home.html')
 
 
