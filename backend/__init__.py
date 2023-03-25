@@ -1,8 +1,7 @@
-# Flask
-from flask import Flask, render_template, session, redirect
 # Other modules
 from pathlib import Path
-import webview
+# Flask
+from flask import Flask, render_template, session, redirect
 
 # Flask App
 BASE_DIR = Path(__file__).resolve().parent.parent
