@@ -2,26 +2,11 @@
 a simple Hangman game with gui using flask and pywebview
 
 Dependencies:
+ - Tailwind CSS for styling
  - HTML, CSS, Javascript
- - Tailwind css
  - Python webview
  - SQLAlchemy
  - Flask 
-
-
-## Preview
-
-* Winning screen
-
-<img src="screenshots/sc-01.png" alt="Image" width="500">
-
-* Losing screen
-
-<img src="screenshots/sc-02.png" alt="Image" width="500">
-
-* Settings screen
-
-<img src="screenshots/sc-03.png" alt="Image" width="500">
 
 ## Installation
 
@@ -41,3 +26,17 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+
+## Program preview
+
+* Winning screen
+
+<img src="screenshots/sc-01.png" alt="Image" width="500">
+
+* Losing screen
+
+<img src="screenshots/sc-02.png" alt="Image" width="500">
+
+* Settings screen
+
+<img src="screenshots/sc-03.png" alt="Image" width="500">
