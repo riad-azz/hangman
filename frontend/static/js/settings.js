@@ -22,9 +22,9 @@ updateLivesForm.addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((data) => {
       livesInput.value = data.lives;
-      showAlert(data.message, data.category);
+      showAlert(data.message);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => showAlert("Something went wrong..."));
 });
 
 addWordForm.addEventListener("submit", (event) => {
@@ -38,8 +38,9 @@ addWordForm.addEventListener("submit", (event) => {
     .then((data) => {
       wordsList.innerHTML = data.template;
       addWordForm.reset();
+      showAlert(data.message);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => showAlert("Something went wrong..."));
 });
 
 const restoreDefaults = () => {
@@ -47,8 +48,9 @@ const restoreDefaults = () => {
     .then((response) => response.json())
     .then((data) => {
       wordsList.innerHTML = data.template;
+      showAlert(data.message);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => showAlert("Something went wrong..."));
 };
 
 const deleteAll = () => {
@@ -56,8 +58,9 @@ const deleteAll = () => {
     .then((response) => response.json())
     .then((data) => {
       wordsList.innerHTML = data.template;
+      showAlert(data.message);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => showAlert("Something went wrong..."));
 };
 
 restoreDefaultsBtn.onclick = restoreDefaults;

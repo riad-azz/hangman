@@ -5,8 +5,8 @@ from wtforms.validators import Length, DataRequired,NumberRange
 
 
 class WordForm(FlaskForm):
-    word = StringField(label='Word', validators=[DataRequired(), Length(min=1)])
+    word = StringField(label='Word', validators=[DataRequired(), Length(min=1, max=45)])
 
 
 class LivesForm(FlaskForm):
-    lives = IntegerField(label='Lives', validators=[DataRequired(), NumberRange(min=1)])
+    lives = IntegerField(label='Lives', validators=[DataRequired(), NumberRange(min=1, max=99)])

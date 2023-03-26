@@ -231,16 +231,16 @@ class Preference(db.Model):
 
 class Word(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    word = db.Column(db.String)
+    text = db.Column(db.String(45))
 
     @staticmethod
     def init_default():
-        instances = [Word(word=x) for x in WORDS]
+        instances = [Word(text=x.upper()) for x in WORDS]
         db.session.add_all(instances)
         db.session.commit()
 
     def __str__(self):
-        return self.word.upper()
+        return self.text.upper()
 
 
 db.create_all()

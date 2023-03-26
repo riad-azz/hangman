@@ -27,7 +27,11 @@ const playerLost = () => {
   const messageElement = gameOverElement.querySelector("#message");
   messageElement.classList.add("text-red-400");
   messageElement.textContent = `Game over you lost !! the word was "${word}"`;
-  wordElement.textContent = word;
+  const letterElements = wordElement.querySelectorAll("*");
+  for (ele of letterElements) {
+    const letter = ele.id.split("-").at(-1);
+    ele.textContent = letter;
+  }
 };
 
 const checkLetter = (event, letter) => {

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="flex flex-col items-center justify-center w-fit mx-auto">
+<div class="flex flex-col items-center justify-center mx-auto">
     <div class="text-2xl py-2 px-4 bg-gray-800 mb-4">
         <span>You have</span>
         <span id="lives-counter" class="text-green-500 font-bold">{{ lives }}</span>
@@ -15,13 +15,13 @@
         </button>
         {% endfor %}
     </div>
-    <div id="word" class="flex items-center justify-between text-6xl space-x-2 mb-4">
+    <div id="word" class="flex flex-wrap justify-center text-6xl space-x-1 mb-4 mx-auto">
         {% for letter in word %}
         <span id="letter-{{ letter }}">_</span>
         {% endfor %}
     </div>
-    <div id="game-over" class="flex flex-col items-center text-xl hidden font-bold space-y-2">
-        <div id="message" class="mb-4"></div>
+    <div id="game-over" class="hidden text-center w-full py-1 px-4 bg-gray-900 text-xl font-semibold rounded-lg">
+        <span id="message"></span>
     </div>
     <div class="flex flex-col items-center justify-center w-full space-y-4 mt-4">
         <a href="{{ url_for('game') }}"

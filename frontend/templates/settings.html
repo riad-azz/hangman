@@ -19,7 +19,7 @@ const removeWord = (event) => {
         {{ lives_form.csrf_token }}
         <label for="lives" class="block text-lg font-bold mb-2">Lives Count</label>
         <div class="flex justify-start items-center">
-            <input id="lives" min="1" name="lives" required="" type="number" value="{{ lives }}"
+            <input id="lives" min="1" max="99" name="lives" required="" type="number" value="{{ lives }}"
                    class="w-fit py-1 px-2 bg-gray-700 text-gray-200 border border-2 border-slate-600 rounded">
             <button type="submit"
                     class="shrink-0 active:border-b-0 active:border-t-4 ml-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
@@ -33,7 +33,7 @@ const removeWord = (event) => {
     <form id="word-form" data-url="{{ url_for('add_word') }}"
           class="flex w-full items-center justify-between mb-4">
         {{ words_form.csrf_token }}
-        <input name="word" id="id_word" type="text"
+        <input name="word" id="id_word" type="text" minlength="2" maxlength="45"
                class="w-full py-1 px-2 bg-gray-700 text-gray-200 border border-2 border-slate-600 rounded" required>
         <button type="submit"
                 class="active:border-b-0 active:border-t-4 shrink-0 ml-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
