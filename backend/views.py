@@ -3,7 +3,7 @@ import webview
 from random import choice
 from string import ascii_uppercase
 # Flask
-from flask import render_template, url_for, redirect, jsonify, flash
+from flask import render_template, url_for, redirect, jsonify
 # Local
 from backend import app, db
 from backend.models import Word, Preference
