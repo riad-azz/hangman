@@ -3,6 +3,7 @@ a simple Hangman game with gui using flask and pywebview
 
 Dependencies:
  - HTML, CSS, Javascript
+ - Tailwind css
  - Python webview
  - SQLAlchemy
  - Flask 
